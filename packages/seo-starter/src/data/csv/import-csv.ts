@@ -1,13 +1,13 @@
 import csvToJson from "csvtojson";
-import path, { dirname } from "node:path";
-import { fileURLToPath } from "node:url";
+import path from "node:path";
 import { CSVCapital, CSVCity, CSVState, Capital, City, State } from "./types";
-
-const __dirname = dirname(fileURLToPath(import.meta.url));
 
 // Capitals
 async function importCapitals(): Promise<CSVCapital[]> {
-  const csvFilePath = path.resolve(__dirname, "files/CMS-Capitais.csv");
+  const csvFilePath = path.resolve(
+    process.cwd(),
+    "src/data/csv/files/CMS-Capitais.csv"
+  );
 
   return await csvToJson().fromFile(csvFilePath);
 }
@@ -32,7 +32,10 @@ export async function getCapitals(): Promise<Capital[]> {
 
 // States
 async function importStates(): Promise<CSVState[]> {
-  const csvFilePath = path.resolve(__dirname, "files/CMS-UF.csv");
+  const csvFilePath = path.resolve(
+    process.cwd(),
+    "src/data/csv/files/CMS-UF.csv"
+  );
 
   return await csvToJson().fromFile(csvFilePath);
 }
@@ -56,13 +59,17 @@ export async function getStates(): Promise<State[]> {
 }
 
 export async function getStateBySlug(uf: string): Promise<State | null> {
+  console.log(process.cwd());
   const states = await getStates();
   const state = states.find((state) => state.slug === uf);
   return state || null;
 }
 
 async function importCities(): Promise<CSVCity[]> {
-  const csvFilePath = path.resolve(__dirname, "files/CMS-Cidades.csv");
+  const csvFilePath = path.resolve(
+    process.cwd(),
+    "src/data/csv/files/CMS-Cidades.csv"
+  );
 
   return await csvToJson().fromFile(csvFilePath);
 }
@@ -86,15 +93,3 @@ export async function getCities() {
   const rawCities = await importCities();
   return normalizeCities(rawCities);
 }
-
-async function importCSV() {
-  const cities = await importCities();
-  const states = await importStates();
-  const capitals = await importCapitals();
-
-  console.log(cities[0]);
-  console.log(states[0]);
-  console.log(capitals[0]);
-}
-
-importCSV();
