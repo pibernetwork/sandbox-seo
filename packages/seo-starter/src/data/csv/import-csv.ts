@@ -66,6 +66,22 @@ export async function getStates(): Promise<State[]> {
   return normalizeStates(rawStates);
 }
 
+export async function getStatePages(prefix: string) {
+  const states = await getStates();
+
+  return states.map((state) => `${prefix}/${state.slug}`);
+}
+
+export async function getCityPages(prefix: string) {
+  const cities = await getCities();
+  return cities.map((city) => `${prefix}/${city.uf}/${city.slug}`);
+}
+
+export async function getKeywordPages(prefix: string) {
+  const keywords = await getKeywords();
+  return keywords.map((keyword) => `${prefix}/${keyword.slug}`);
+}
+
 export async function getStateBySlug(uf: string): Promise<State | null> {
   const states = await getStates();
   const state = states.find((state) => state.slug === uf);
