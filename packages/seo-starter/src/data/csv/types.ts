@@ -56,3 +56,8 @@ export interface State {
   art2: string;
   capital: string;
 }
+
+export interface Keyword {
+  name: string;
+  slug: string;
+}

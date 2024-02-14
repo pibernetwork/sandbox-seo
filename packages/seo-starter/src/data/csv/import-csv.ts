@@ -1,6 +1,14 @@
 import csvToJson from "csvtojson";
 import path from "node:path";
-import { CSVCapital, CSVCity, CSVState, Capital, City, State } from "./types";
+import {
+  CSVCapital,
+  CSVCity,
+  CSVState,
+  Capital,
+  City,
+  Keyword,
+  State,
+} from "./types";
 
 // Capitals
 async function importCapitals(): Promise<CSVCapital[]> {
@@ -59,10 +67,15 @@ export async function getStates(): Promise<State[]> {
 }
 
 export async function getStateBySlug(uf: string): Promise<State | null> {
-  console.log(process.cwd());
   const states = await getStates();
   const state = states.find((state) => state.slug === uf);
   return state || null;
+}
+
+export async function getCityBySlug(slug: string): Promise<City | null> {
+  const cities = await getCities();
+  const city = cities.find((city) => city.slug === slug);
+  return city || null;
 }
 
 async function importCities(): Promise<CSVCity[]> {
@@ -92,4 +105,22 @@ function normalizeCities(rawCities: CSVCity[]): City[] {
 export async function getCities() {
   const rawCities = await importCities();
   return normalizeCities(rawCities);
+}
+
+const keywords: Keyword[] = [
+  { name: "Keyword 1", slug: "keyword-one" },
+  { name: "Keyword 2", slug: "keyword-two" },
+  { name: "Keyword 3", slug: "keyword-three" },
+  { name: "Keyword 4", slug: "keyword-four" },
+  { name: "Keyword 5", slug: "keyword-five" },
+];
+
+export function getKeywords() {
+  return keywords;
+}
+
+export function getKeywordsBySlug(slug: string): Keyword | null {
+  const keywords = getKeywords();
+  const keyword = keywords.find((keyword) => keyword.slug === slug);
+  return keyword || null;
 }
