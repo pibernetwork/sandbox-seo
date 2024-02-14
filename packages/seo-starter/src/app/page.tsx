@@ -13,7 +13,7 @@ export default async function Home() {
         <ul>
           {states.map((state) => {
             return (
-              <li>
+              <li key={state.slug}>
                 <Link href={`/palavra-chave/${state.slug}`}>{state.name}</Link>
               </li>
             );
