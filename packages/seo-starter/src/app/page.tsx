@@ -1,5 +1,7 @@
+import Banner from "@/components/Banner";
+import Header from "@/components/Header";
+import Link from "@/components/Link";
 import { getCapitals, getCities, getStates } from "@/data/csv/import-csv";
-import Link from "next/link";
 
 export default async function Home() {
   const states = await getStates();
@@ -8,9 +10,15 @@ export default async function Home() {
 
   return (
     <main className="min-h-screen p-12">
-      <div>
-        <h1>Links States 1</h1>
-        <ul>
+      <Header />
+
+      <Banner title="SEO Starter" description="Meu site sobre alguma coisa." />
+
+      <section className="p-4 bg-green-900">
+        <h2 className="font-medium text-2xl">Veja mais:</h2>
+        <Link href="/palavra-chave">Palavra Chave</Link>
+      </section>
+      {/* <ul>
           {states.map((state) => {
             return (
               <li key={state.slug}>
@@ -18,11 +26,11 @@ export default async function Home() {
               </li>
             );
           })}
-        </ul>
-      </div>
-      <pre>{JSON.stringify(states[0], null, 2)}</pre>
+        </ul> */}
+
+      {/* <pre>{JSON.stringify(states[0], null, 2)}</pre>
       <pre>{JSON.stringify(cities[0], null, 2)}</pre>
-      <pre>{JSON.stringify(capitals[0], null, 2)}</pre>
+      <pre>{JSON.stringify(capitals[0], null, 2)}</pre> */}
     </main>
   );
 }
