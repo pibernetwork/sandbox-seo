@@ -4,6 +4,9 @@ import {
   getStateBySlug,
 } from "@/data/csv/import-csv";
 import { City, Keyword, State } from "@/data/csv/types";
+import CityPage from "../components/City";
+import KeywordPage from "../components/Keyword";
+import StatePage from "../components/State";
 
 interface StatePage {
   type: "state";
@@ -75,19 +78,15 @@ export default async function Page({ params }: { params: { slug: string[] } }) {
   switch (page.type) {
     case "article": {
       const [article] = page.payload;
-      return <div>Article {article.name}</div>;
+      return <KeywordPage keyword={article} />;
     }
     case "city": {
       const [state, city] = page.payload;
-      return (
-        <div>
-          City {state.name} - {city.name}
-        </div>
-      );
+      return <CityPage state={state} city={city} />;
     }
     case "state": {
       const [state] = page.payload;
-      return <div>State {state.name}</div>;
+      return <StatePage state={state} />;
     }
     case "error": {
       const error = page.error;
