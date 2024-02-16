@@ -1,5 +1,5 @@
-import { Keyword } from "@/data/csv/types";
+import { CMSKeywordItem } from "@/data/cms/types";
 
-export default function KeywordPage({ keyword }: { keyword: Keyword }) {
+export default function KeywordPage({ keyword }: { keyword: CMSKeywordItem }) {
   return <div>Article {keyword.name}</div>;
 }
