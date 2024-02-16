@@ -1,13 +1,13 @@
-import { CSVCapital, Capital } from "../types";
-import { importFile } from "./utils";
+import { CSVCapital, NormalizeCapital } from "../types.js";
+import { importFile } from "./utils.js";
 
-const CMS_FILE = "CMS-Capitals.csv";
+const CMS_FILE = "CMS-Capitais.csv";
 
 async function importCapitals(): Promise<CSVCapital[]> {
   return importFile<CSVCapital[]>(CMS_FILE);
 }
 
-function normalizeCapitals(rawCapitals: CSVCapital[]): Capital[] {
+function normalizeCapitals(rawCapitals: CSVCapital[]): NormalizeCapital[] {
   return rawCapitals.map((item) => {
     return {
       name: item.Name,
@@ -16,11 +16,11 @@ function normalizeCapitals(rawCapitals: CSVCapital[]): Capital[] {
       art2: item.Art2capital,
       state: item.Estado,
       uf: item.UF,
-    } satisfies Capital;
+    } satisfies NormalizeCapital;
   });
 }
 
-export async function getCapitals(): Promise<Capital[]> {
+export async function getCapitals(): Promise<NormalizeCapital[]> {
   const rawCapitals = await importCapitals();
   return normalizeCapitals(rawCapitals);
 }

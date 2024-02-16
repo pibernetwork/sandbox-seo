@@ -7,7 +7,7 @@ export interface CSVCapital {
   UF: string;
 }
 
-export interface Capital {
+export interface NormalizeCapital {
   name: string;
   slug: string;
   art1: string;
@@ -28,7 +28,7 @@ export interface CSVCity {
   destaque: string;
 }
 
-export interface City {
+export interface NormalizeCity {
   name: string;
   slug: string;
   art1: string;
@@ -48,18 +48,13 @@ export interface CSVUf {
   Estado: string;
 }
 
-export interface Uf {
+export interface NormalizeUf {
   name: string;
   slug: string;
   state: string;
   art1: string;
   art2: string;
   capital: string;
-}
-
-export interface Keyword {
-  name: string;
-  slug: string;
 }
 
 export interface CSVState {
@@ -71,11 +66,26 @@ export interface CSVState {
   UF: string;
 }
 
-export interface State {
+export interface NormalizeState {
   name: string;
   slug: string;
   art1: string;
   art2: string;
   capital: string;
   uf: string;
+}
+
+export interface RawState {
+  of: string;
+  in: string;
+  name: string;
+  acronym: string;
+  cities: RawCity[];
+  capital: RawCity;
+}
+
+export interface RawCity {
+  of: string;
+  in: string;
+  name: string;
 }

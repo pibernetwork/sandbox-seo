@@ -1,24 +1,25 @@
-import { getCityBySlug } from "@/data/csv/import/cities";
-import { getUfBySlug } from "@/data/csv/import/uf";
-import { getKeywordsBySlug } from "@/data/csv/seo/keywords";
-import { City, Keyword, Uf } from "@/data/csv/types";
-import CityPage from "../components/City";
-import KeywordPage from "../components/Keyword";
-import StatePage from "../components/State";
+import { getKeywordsBySlug } from "@/data/cms/collections/keywords";
+
+import { getCityBySlug } from "@/data/cms/collections/cities";
+import { getStateByAcronymSlug } from "@/data/cms/collections/states";
+import { CMSCityItem, CMSKeywordItem, CMSStateItem } from "@/data/cms/types";
+import CityPage from "../cms/City";
+import KeywordPage from "../cms/Keyword";
+import StatePage from "../cms/State";
 
 interface StatePage {
   type: "state";
-  payload: [Uf];
+  payload: [CMSStateItem];
 }
 
 interface CityPage {
   type: "city";
-  payload: [Uf, City];
+  payload: [CMSStateItem, CMSCityItem];
 }
 
 interface ArticlePage {
   type: "article";
-  payload: [Keyword];
+  payload: [CMSKeywordItem];
 }
 
 interface ErrorPage {
@@ -31,7 +32,7 @@ type Pages = StatePage | CityPage | ArticlePage | ErrorPage;
 async function getPage(slug: string[]): Promise<Pages> {
   const [stateOrKeywordSlug, citySlug] = slug;
 
-  const state = await getUfBySlug(stateOrKeywordSlug);
+  const state = await getStateByAcronymSlug(stateOrKeywordSlug);
   const keyword = await getKeywordsBySlug(stateOrKeywordSlug);
 
   if (!state && !keyword) {
@@ -66,7 +67,7 @@ async function getPage(slug: string[]): Promise<Pages> {
 
   return {
     type: "city",
-    payload: [state as Uf, city],
+    payload: [state as CMSStateItem, city],
   };
 }
 

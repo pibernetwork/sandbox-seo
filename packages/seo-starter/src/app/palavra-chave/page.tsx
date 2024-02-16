@@ -1,21 +1,16 @@
 import Banner from "@/components/Banner";
-import Header from "@/components/Header";
+import KeywordStatesLinks from "@/components/KeywordStatesLinks";
 import Link from "@/components/Link";
 
-import { getCapitals } from "@/data/csv/import/capitals";
-import { getUfs } from "@/data/csv/import/uf";
-import { getKeywords } from "@/data/csv/seo/keywords";
-import { AsyncServerComponent } from "./components/ASyncServerComponent";
+import { getKeywords } from "@/data/cms/collections/keywords";
 
 export default async function Page() {
-  const states = await getUfs();
+  // const states = await getUfs();
   const keywords = await getKeywords();
-  const capitals = await getCapitals();
+  // const capitals = await getCapitals();
 
   return (
-    <main className="px-4">
-      <Header />
-
+    <>
       <Banner
         title="Palavra Chave"
         description="Esse é o meu texto sobre a palavra chave.
@@ -23,7 +18,7 @@ export default async function Page() {
         Devemos cuidar da palavra chave."
       />
 
-      <AsyncServerComponent />
+      <KeywordStatesLinks keyword="palavra-chave" />
 
       <section className="p-4 bg-green-900">
         <h2 className="font-medium text-2xl text-center">Veja mais:</h2>
@@ -46,7 +41,7 @@ export default async function Page() {
           ))}
         </div>
         <hr className="h-px my-2 bg-gray-200 border-0 dark:bg-gray-100"></hr>
-        <h3 className="font-medium text-xl">Páginas do CMS Estados:</h3>
+        {/* <h3 className="font-medium text-xl">Páginas do CMS Estados:</h3>
         <div className="flex flex-wrap">
           {states.map((state) => (
             <div className="inline-block mx-4" key={state.slug}>
@@ -64,9 +59,9 @@ export default async function Page() {
               </Link>
             </div>
           ))}
-        </div>
+        </div> */}
         <hr className="h-px my-2 bg-gray-200 border-0 dark:bg-gray-100"></hr>
       </section>
-    </main>
+    </>
   );
 }

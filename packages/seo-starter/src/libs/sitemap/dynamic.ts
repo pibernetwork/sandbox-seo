@@ -1,10 +1,10 @@
-import { getCityPages } from "@/data/csv/seo/cities";
-import { getKeywordPages } from "@/data/csv/seo/keywords";
-import { getStatePages } from "@/data/csv/seo/states";
+import { getCitiesPages } from "@/data/cms/collections/cities";
+import { getKeywordPages } from "@/data/cms/collections/keywords";
+import { getUFPages } from "@/data/cms/collections/states";
 
-export async function getDynamicPages() {
-  const keywordPages = await getKeywordPages("palavra-chave");
-  const statePages = await getStatePages("palavra-chave");
-  const cityPages = await getCityPages("palavra-chave");
-  return [...keywordPages, ...statePages, ...cityPages];
+export async function getDynamicPages(keyword: string) {
+  const keywordPages = await getKeywordPages(keyword);
+  const ufPages = await getUFPages(keyword);
+  const cityPages = await getCitiesPages(keyword);
+  return [...keywordPages, ...cityPages, ...ufPages];
 }

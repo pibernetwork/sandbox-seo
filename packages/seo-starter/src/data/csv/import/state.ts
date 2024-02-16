@@ -1,12 +1,12 @@
-import { CSVState, State } from "../types";
-import { importFile } from "./utils";
+import { CSVState, NormalizeState } from "../types.js";
+import { importFile } from "./utils.js";
 
 const CMS_FILE = "CMS-Estados.csv";
 async function importStates(): Promise<CSVState[]> {
   return importFile<CSVState[]>(CMS_FILE);
 }
 
-function normalizeStates(rawStates: CSVState[]): State[] {
+function normalizeStates(rawStates: CSVState[]): NormalizeState[] {
   return rawStates.map((state) => {
     return {
       name: state.Name,
@@ -15,16 +15,18 @@ function normalizeStates(rawStates: CSVState[]): State[] {
       art2: state.Art2uf,
       uf: state.UF,
       capital: state.Capital,
-    } satisfies State;
+    } satisfies NormalizeState;
   });
 }
 
-export async function getStates(): Promise<State[]> {
+export async function getStates(): Promise<NormalizeState[]> {
   const rawStates = await importStates();
   return normalizeStates(rawStates);
 }
 
-export async function getStateBySlug(uf: string): Promise<State | null> {
+export async function getStateBySlug(
+  uf: string
+): Promise<NormalizeState | null> {
   const states = await getStates();
   const state = states.find((state) => state.slug === uf);
   return state || null;
