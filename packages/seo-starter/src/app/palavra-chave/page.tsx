@@ -1,11 +1,14 @@
 import Banner from "@/components/Banner";
 import Header from "@/components/Header";
 import Link from "@/components/Link";
-import { getCapitals, getKeywords, getStates } from "@/data/csv/import-csv";
+
+import { getCapitals } from "@/data/csv/import/capitals";
+import { getUfs } from "@/data/csv/import/uf";
+import { getKeywords } from "@/data/csv/seo/keywords";
 import { AsyncServerComponent } from "./components/ASyncServerComponent";
 
 export default async function Page() {
-  const states = await getStates();
+  const states = await getUfs();
   const keywords = await getKeywords();
   const capitals = await getCapitals();
 

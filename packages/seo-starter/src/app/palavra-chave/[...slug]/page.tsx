@@ -1,21 +1,19 @@
-import {
-  getCityBySlug,
-  getKeywordsBySlug,
-  getStateBySlug,
-} from "@/data/csv/import-csv";
-import { City, Keyword, State } from "@/data/csv/types";
+import { getCityBySlug } from "@/data/csv/import/cities";
+import { getUfBySlug } from "@/data/csv/import/uf";
+import { getKeywordsBySlug } from "@/data/csv/seo/keywords";
+import { City, Keyword, Uf } from "@/data/csv/types";
 import CityPage from "../components/City";
 import KeywordPage from "../components/Keyword";
 import StatePage from "../components/State";
 
 interface StatePage {
   type: "state";
-  payload: [State];
+  payload: [Uf];
 }
 
 interface CityPage {
   type: "city";
-  payload: [State, City];
+  payload: [Uf, City];
 }
 
 interface ArticlePage {
@@ -33,7 +31,7 @@ type Pages = StatePage | CityPage | ArticlePage | ErrorPage;
 async function getPage(slug: string[]): Promise<Pages> {
   const [stateOrKeywordSlug, citySlug] = slug;
 
-  const state = await getStateBySlug(stateOrKeywordSlug);
+  const state = await getUfBySlug(stateOrKeywordSlug);
   const keyword = await getKeywordsBySlug(stateOrKeywordSlug);
 
   if (!state && !keyword) {
@@ -68,7 +66,7 @@ async function getPage(slug: string[]): Promise<Pages> {
 
   return {
     type: "city",
-    payload: [state as State, city],
+    payload: [state as Uf, city],
   };
 }
 

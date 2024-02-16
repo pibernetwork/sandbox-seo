@@ -39,7 +39,7 @@ export interface City {
   state: string;
 }
 
-export interface CSVState {
+export interface CSVUf {
   Name: string;
   Slug: string;
   Art1uf: string;
@@ -48,7 +48,7 @@ export interface CSVState {
   Estado: string;
 }
 
-export interface State {
+export interface Uf {
   name: string;
   slug: string;
   state: string;
@@ -60,4 +60,22 @@ export interface State {
 export interface Keyword {
   name: string;
   slug: string;
+}
+
+export interface CSVState {
+  Name: string;
+  Slug: string;
+  Art1uf: string;
+  Art2uf: string;
+  Capital: string;
+  UF: string;
+}
+
+export interface State {
+  name: string;
+  slug: string;
+  art1: string;
+  art2: string;
+  capital: string;
+  uf: string;
 }

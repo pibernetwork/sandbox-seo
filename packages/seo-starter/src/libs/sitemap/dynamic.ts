@@ -1,8 +1,6 @@
-import {
-  getCityPages,
-  getKeywordPages,
-  getStatePages,
-} from "@/data/csv/import-csv";
+import { getCityPages } from "@/data/csv/seo/cities";
+import { getKeywordPages } from "@/data/csv/seo/keywords";
+import { getStatePages } from "@/data/csv/seo/states";
 
 export async function getDynamicPages() {
   const keywordPages = await getKeywordPages("palavra-chave");
