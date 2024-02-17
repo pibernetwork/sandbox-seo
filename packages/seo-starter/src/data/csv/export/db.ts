@@ -6,7 +6,7 @@ import { getStates } from "../import/state.js";
 import { getUfs } from "../import/uf.js";
 import { RawCity, RawState } from "../types.js";
 
-async function generateRawDB() {
+async function generateRawDB(): Promise<RawState[]> {
   const states = await getStates();
   const ufs = await getUfs();
   const cities = await getCities();
@@ -75,11 +75,24 @@ async function generateRawDB() {
     rawStates.push(rawState);
   }
 
-  const dbFilePath = path.resolve(process.cwd(), `src/data/csv/files/db.json`);
+  const dbFilePath = path.resolve(process.cwd(), `src/data/db/states-all.json`);
 
   fs.writeFileSync(dbFilePath, JSON.stringify(rawStates));
 
   console.log("Done");
+
+  return rawStates;
 }
 
-generateRawDB();
+function exportCMSStates() {}
+
+function exportCMSCities() {}
+
+async function exportCMS() {
+  generateRawDB();
+
+  exportCMSStates();
+  exportCMSCities();
+}
+
+exportCMS();

@@ -29,7 +29,7 @@ interface ErrorPage {
 
 type Pages = StatePage | CityPage | ArticlePage | ErrorPage;
 
-async function getPage(slug: string[]): Promise<Pages> {
+async function getPageData(slug: string[]): Promise<Pages> {
   const [stateOrKeywordSlug, citySlug] = slug;
 
   const state = await getStateByAcronymSlug(stateOrKeywordSlug);
@@ -72,7 +72,7 @@ async function getPage(slug: string[]): Promise<Pages> {
 }
 
 export default async function Page({ params }: { params: { slug: string[] } }) {
-  const page = await getPage(params.slug);
+  const page = await getPageData(params.slug);
 
   switch (page.type) {
     case "article": {
