@@ -6,9 +6,9 @@ export default function LinksInlineList({
   links: { href: string; label: string }[];
 }) {
   return (
-    <div className="flex flex-wrap">
+    <div className="">
       {links.map(({ href, label }) => (
-        <div className="inline-block mx-4" key={label}>
+        <div className="block mx-4" key={label}>
           <Link href={href}>{label}</Link>
         </div>
       ))}
