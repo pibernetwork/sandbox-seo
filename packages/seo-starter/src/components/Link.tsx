@@ -8,7 +8,7 @@ export default function Link({
 }: {
   children: React.ReactNode;
   href: string;
-  className: string;
+  className?: string;
 }) {
   return (
     <NextLink
