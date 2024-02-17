@@ -6,11 +6,11 @@ export default function LinksInlineList({
   links: { href: string; label: string }[];
 }) {
   return (
-    <div className="">
+    <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 md:grid-cols-4 p-4">
       {links.map(({ href, label }) => (
-        <div className="block mx-4" key={label}>
-          <Link href={href}>{label}</Link>
-        </div>
+        <Link key={href} href={href}>
+          {label}
+        </Link>
       ))}
     </div>
   );
