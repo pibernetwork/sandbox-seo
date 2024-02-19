@@ -1,6 +1,6 @@
-import { getCitiesPages } from "@/data/cms/collections/cities";
-import { getKeywordPages } from "@/data/cms/collections/keywords";
-import { getUFPages } from "@/data/cms/collections/states";
+import { getCitiesPages } from '@/data/cms/collections/cities';
+import { getKeywordPages } from '@/data/cms/collections/keywords';
+import { getUFPages } from '@/data/cms/collections/states';
 
 export async function getDynamicPages(keyword: string) {
   const keywordPages = await getKeywordPages(keyword);

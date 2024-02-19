@@ -1,8 +1,13 @@
-import Banner from "@/components/Banner";
-import KeywordStatesLinks from "@/components/KeywordStatesLinks";
-import Link from "@/components/Link";
+import Banner from '@/components/Banner';
+import KeywordStatesLinks from '@/components/KeywordStatesLinks';
+import Link from '@/components/Link';
+import { getKeywords } from '@/data/cms/collections/keywords';
+import { Metadata } from 'next';
 
-import { getKeywords } from "@/data/cms/collections/keywords";
+export const metadata: Metadata = {
+  title: 'SEO Starter - Palavra chave',
+  description: 'O principal sobre palavra chave',
+};
 
 export default async function Page() {
   // const states = await getUfs();

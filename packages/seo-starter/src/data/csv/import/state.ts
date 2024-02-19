@@ -1,7 +1,7 @@
-import { CSVState, NormalizeState } from "../types.js";
-import { importFile } from "./utils.js";
+import { CSVState, NormalizeState } from '../types.js';
+import { importFile } from './utils.js';
 
-const CMS_FILE = "CMS-Estados.csv";
+const CMS_FILE = 'CMS-Estados.csv';
 async function importStates(): Promise<CSVState[]> {
   return importFile<CSVState[]>(CMS_FILE);
 }
@@ -25,7 +25,7 @@ export async function getStates(): Promise<NormalizeState[]> {
 }
 
 export async function getStateBySlug(
-  uf: string
+  uf: string,
 ): Promise<NormalizeState | null> {
   const states = await getStates();
   const state = states.find((state) => state.slug === uf);

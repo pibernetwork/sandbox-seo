@@ -1,10 +1,10 @@
-import fs from "node:fs";
-import path from "node:path";
-import { getCapitals } from "../import/capitals.js";
-import { getCities } from "../import/cities.js";
-import { getStates } from "../import/state.js";
-import { getUfs } from "../import/uf.js";
-import { RawCity, RawState } from "../types.js";
+import fs from 'node:fs';
+import path from 'node:path';
+import { getCapitals } from '../import/capitals.js';
+import { getCities } from '../import/cities.js';
+import { getStates } from '../import/state.js';
+import { getUfs } from '../import/uf.js';
+import { RawCity, RawState } from '../types.js';
 
 async function generateRawDB(): Promise<RawState[]> {
   const states = await getStates();
@@ -36,13 +36,13 @@ async function generateRawDB(): Promise<RawState[]> {
     };
 
     const stateCities = cities.filter(
-      (city) => city.uf === partialRawState.acronym?.toLocaleLowerCase()
+      (city) => city.uf === partialRawState.acronym?.toLocaleLowerCase(),
     );
 
     console.warn(`${partialRawState.acronym} - ${stateCities.length}`);
 
     const stateCapital = capitals.find(
-      (city) => city.uf === partialRawState.acronym?.toLocaleLowerCase()
+      (city) => city.uf === partialRawState.acronym?.toLocaleLowerCase(),
     );
 
     if (!stateCapital) {
@@ -79,7 +79,7 @@ async function generateRawDB(): Promise<RawState[]> {
 
   fs.writeFileSync(dbFilePath, JSON.stringify(rawStates));
 
-  console.log("Done");
+  console.log('Done');
 
   return rawStates;
 }

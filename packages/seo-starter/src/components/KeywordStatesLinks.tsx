@@ -1,5 +1,5 @@
-import LinksInlineList from "@/components/Layout/LinkInlineList";
-import { getStatesAcronymSlug } from "@/data/cms/collections/states";
+import LinksInlineList from '@/components/Layout/LinkInlineList';
+import { getStatesAcronymSlug } from '@/data/cms/collections/states';
 
 export default async function KeywordStatesLinks({
   keyword,

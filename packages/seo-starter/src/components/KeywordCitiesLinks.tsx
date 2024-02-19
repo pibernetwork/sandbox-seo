@@ -1,5 +1,5 @@
-import LinksInlineList from "@/components/Layout/LinkInlineList";
-import { getStateCities } from "@/data/cms/collections/cities";
+import LinksInlineList from '@/components/Layout/LinkInlineList';
+import { getStateCities } from '@/data/cms/collections/cities';
 
 export default async function KeywordCitiesLinks({
   keyword,

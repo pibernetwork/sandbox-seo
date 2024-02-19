@@ -1,11 +1,11 @@
-import { CMSKeywordItem } from "../types";
+import { CMSKeywordItem } from '../types';
 
 const keywords: CMSKeywordItem[] = [
-  { name: "Keyword 1", slug: "keyword-one" },
-  { name: "Keyword 2", slug: "keyword-two" },
-  { name: "Keyword 3", slug: "keyword-three" },
-  { name: "Keyword 4", slug: "keyword-four" },
-  { name: "Keyword 5", slug: "keyword-five" },
+  { name: 'Keyword 1', slug: 'keyword-one' },
+  { name: 'Keyword 2', slug: 'keyword-two' },
+  { name: 'Keyword 3', slug: 'keyword-three' },
+  { name: 'Keyword 4', slug: 'keyword-four' },
+  { name: 'Keyword 5', slug: 'keyword-five' },
 ];
 
 export function getKeywords() {

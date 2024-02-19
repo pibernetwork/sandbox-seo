@@ -1,6 +1,6 @@
-import slugify from "slugify";
-import { importDb } from "../import";
-import { CMSStateItem } from "../types";
+import slugify from 'slugify';
+import { importDb } from '../import';
+import { CMSStateItem } from '../types';
 
 export function getStatesNameSlug() {
   const db = importDb();

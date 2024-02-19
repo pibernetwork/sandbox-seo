@@ -1,7 +1,7 @@
-import { CSVCity, NormalizeCity } from "../types.js";
-import { importFile } from "./utils.js";
+import { CSVCity, NormalizeCity } from '../types.js';
+import { importFile } from './utils.js';
 
-const CMS_FILE = "CMS-Cidades.csv";
+const CMS_FILE = 'CMS-Cidades.csv';
 
 async function importCities(): Promise<CSVCity[]> {
   return importFile<CSVCity[]>(CMS_FILE);
@@ -23,7 +23,7 @@ function normalizeCities(rawCities: CSVCity[]): NormalizeCity[] {
 }
 
 export async function getCityBySlug(
-  slug: string
+  slug: string,
 ): Promise<NormalizeCity | null> {
   const cities = await getCities();
   const city = cities.find((city) => city.slug === slug);

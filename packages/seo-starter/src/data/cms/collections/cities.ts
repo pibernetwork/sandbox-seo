@@ -1,6 +1,6 @@
-import slugify from "slugify";
-import { importDb } from "../import";
-import { CMSCityItem } from "../types";
+import slugify from 'slugify';
+import { importDb } from '../import';
+import { CMSCityItem } from '../types';
 
 function getCities() {
   const db = importDb();
@@ -34,7 +34,7 @@ function getCities() {
 export async function getCitiesPages(prefix: string) {
   const cities = await getCities();
   return cities.map(
-    (city) => `${prefix}/${city.stateSlugAcronym}/${city.slug}`
+    (city) => `${prefix}/${city.stateSlugAcronym}/${city.slug}`,
   );
 }
 
@@ -53,7 +53,7 @@ export async function getStateCities(stateNameOrAcronym: string) {
   const stateCities = cities.filter(
     (city) =>
       city.stateName === stateNameOrAcronym ||
-      city.stateAcronym === stateNameOrAcronym
+      city.stateAcronym === stateNameOrAcronym,
   );
 
   return stateCities;

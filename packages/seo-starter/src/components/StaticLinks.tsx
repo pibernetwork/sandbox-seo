@@ -1,18 +1,18 @@
-import LinksInlineList from "./Layout/LinkInlineList";
+import LinksInlineList from './Layout/LinkInlineList';
 
 export default function StaticLinks() {
   const links: { href: string; label: string }[] = [
     {
-      href: "/carros",
-      label: "Carros",
+      href: '/carros',
+      label: 'Carros',
     },
     {
-      href: "/barcos",
-      label: "Barcos",
+      href: '/barcos',
+      label: 'Barcos',
     },
     {
-      href: "/motos",
-      label: "Motos",
+      href: '/motos',
+      label: 'Motos',
     },
   ];
 

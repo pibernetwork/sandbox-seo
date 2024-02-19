@@ -1,5 +1,5 @@
-import cx from "classnames";
-import NextLink from "next/link";
+import cx from 'classnames';
+import NextLink from 'next/link';
 
 export default function Link({
   children,
@@ -14,7 +14,7 @@ export default function Link({
     <NextLink
       className={cx(
         className,
-        'font-medium text-blue-600 dark:text-blue-500 hover:underline"'
+        'font-medium text-blue-600 dark:text-blue-500 hover:underline"',
       )}
       href={href}
     >

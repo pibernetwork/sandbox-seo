@@ -1,10 +1,10 @@
-import Banner from "@/components/Banner";
-import Link from "@/components/Link";
-import StaticLinks from "@/components/StaticLinks";
-import { Metadata } from "next";
+import Banner from '@/components/Banner';
+import Link from '@/components/Link';
+import StaticLinks from '@/components/StaticLinks';
+import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: "SEO Stater - Best SEO Strategy on internet",
+  title: 'SEO Starter - Best SEO Strategy on internet',
   description: "We're going to try to find the best seo strategy",
 };
 

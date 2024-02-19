@@ -1,7 +1,7 @@
-import { CSVUf, NormalizeUf } from "../types.js";
-import { importFile } from "./utils.js";
+import { CSVUf, NormalizeUf } from '../types.js';
+import { importFile } from './utils.js';
 
-const CMS_FILE = "CMS-UF.csv";
+const CMS_FILE = 'CMS-UF.csv';
 
 async function importUfs(): Promise<CSVUf[]> {
   return importFile<CSVUf[]>(CMS_FILE);

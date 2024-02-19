@@ -1,7 +1,7 @@
-import { CSVCapital, NormalizeCapital } from "../types.js";
-import { importFile } from "./utils.js";
+import { CSVCapital, NormalizeCapital } from '../types.js';
+import { importFile } from './utils.js';
 
-const CMS_FILE = "CMS-Capitais.csv";
+const CMS_FILE = 'CMS-Capitais.csv';
 
 async function importCapitals(): Promise<CSVCapital[]> {
   return importFile<CSVCapital[]>(CMS_FILE);
